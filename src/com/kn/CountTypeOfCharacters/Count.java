@@ -1,40 +1,82 @@
 package com.kn.CountTypeOfCharacters;
 
 public class Count {
-	static int countConsonants(String s) {
-		int consonants = 0;
+	public int countConsonants(String s) {
+		int upperCaseConsonants = 0;
+		int lowerCaseConsonants = 0;
 		for (int i = 0; i < s.length(); i++) {
 			if (s.charAt(i) >= 'A' && s.charAt(i) <= 'Z') {
 				if (s.charAt(i) != 'A' && s.charAt(i) != 'E' && s.charAt(i) != 'I' && s.charAt(i) != 'O'
 						&& s.charAt(i) != 'U') {
-					consonants++;
+					upperCaseConsonants++;
+				}
+			}
+			if (s.charAt(i) >= 'a' && s.charAt(i) <= 'z') {
+
+				if (s.charAt(i) != 'a' && s.charAt(i) != 'e' && s.charAt(i) != 'i' && s.charAt(i) != 'o'
+						&& s.charAt(i) != 'u') {
+					lowerCaseConsonants++;
 				}
 			}
 		}
-		return consonants;
+		System.out.println("Consonants : " + (upperCaseConsonants + lowerCaseConsonants));
+		System.out.println("UpperCase Consonants : " + upperCaseConsonants);
+		System.out.println("LowerCase Consonants : " + lowerCaseConsonants);
+		System.out.println("____________________________________________________");
+		return (upperCaseConsonants + lowerCaseConsonants);
 	}
 
-	static int countNumbers(String s) {
+	public int countNumbers(String s) {
 		int numbers = 0;
 		for (int i = 0; i < s.length(); i++) {
-			if (s.charAt(i) >= '0' && s.charAt(i) <= '9') {
+			if (s.charAt(i) >= 48 && s.charAt(i) <= 57) {
 				numbers++;
 			}
 		}
+		System.out.println("Numbers : " + numbers);
+		System.out.println("____________________________________________________");
 		return numbers;
 
 	}
 
-	static int countVowels(String s) {
-		int vowels = 0;
+	public int countVowels(String s) {
+		int upperCaseVowels = 0;
+		int lowerCaseVowels = 0;
 		for (int i = 0; i < s.length(); i++) {
 			if (s.charAt(i) == 'A' || s.charAt(i) == 'E' || s.charAt(i) == 'I' || s.charAt(i) == 'O'
 					|| s.charAt(i) == 'U') {
-				vowels++;
+				upperCaseVowels++;
 			}
-		}
-		return vowels;
+			if (s.charAt(i) == 'a' || s.charAt(i) == 'e' || s.charAt(i) == 'i' || s.charAt(i) == 'o'
+					|| s.charAt(i) == 'u') {
+				lowerCaseVowels++;
+			}
+		} //
+		System.out.println("Vowels : " + (upperCaseVowels + lowerCaseVowels));
+		System.out.println("UpperCase Vowels : " + upperCaseVowels);
+		System.out.println("LowerCase Vowels : " + lowerCaseVowels);
+		System.out.println("____________________________________________________");
+		return (upperCaseVowels + lowerCaseVowels);
+
 	}
 
-	
+	public int countSpaces(String s) {
+		int count = 0;
+		for (int i = 0; i < s.length(); i++) {
+			if (s.charAt(i) == ' ' || s.charAt(i) == 32) {
+				count++;
+			}
+		}
+		System.out.println("Spaces : " + count);
+		System.out.println("____________________________________________________");
+		return count;
+
+	}
+
+	public void countSpecialCharacters(String s) {
+		int speicalCharacters = s.length() - (countVowels(s) + countConsonants(s) + countNumbers(s) + countSpaces(s));
+		System.out.println("Special Characters : " + speicalCharacters);
+		System.out.println("____________________________________________________");
+	}
+
 }
